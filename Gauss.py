@@ -45,11 +45,11 @@ def gauss_cannon(system):
         except Exception as e:
             pass
 
-    if round(system[system_lenght-1][system_lenght-1], 5) == 0 and round(system[system_lenght-1][system_lenght], 5) != 0:
-        print("\nThe triangular system is:")
-        print(system)
-        print("There's no solution for that system")
-        return []
+        if round(system[i][system_lenght-1], 5) == 0 and round(system[i][system_lenght], 5) != 0:
+            print("\nThe triangular system is:")
+            print(system)
+            print("There's no solution for that system")
+            return []
 
     if round(system[system_lenght-1][system_lenght-1], 5) == 0 and round(system[system_lenght-1][system_lenght], 5) == 0:
         print("\nThe triangular system is:")
