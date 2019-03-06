@@ -34,15 +34,30 @@ def gauss_cannon(system):
             system[maximum_row][k] = system[i][k]
             system[i][k] = tmp
 
-        for k in range(i+1, system_lenght):
-            c = -system[k][i]/system[i][i]
-            for j in range(i, system_lenght+1):
-                if i == j:
-                    system[k][j] = 0
-                else:
-                    system[k][j] += c * system[i][j]
+        try:
+            for k in range(i+1, system_lenght):
+                c = -system[k][i]/system[i][i]
+                for j in range(i, system_lenght+1):
+                    if i == j:
+                        system[k][j] = 0
+                    else:
+                        system[k][j] += c * system[i][j]
+        except Exception as e:
+            pass
 
-    print("The triangular system is:")
+    if round(system[system_lenght-1][system_lenght-1], 5) == 0 and round(system[system_lenght-1][system_lenght], 5) != 0:
+        print("\nThe triangular system is:")
+        print(system)
+        print("There's no solution for that system")
+        return []
+
+    if round(system[system_lenght-1][system_lenght-1], 5) == 0 and round(system[system_lenght-1][system_lenght], 5) == 0:
+        print("\nThe triangular system is:")
+        print(system)
+        print("There's infinite solutions for that system")
+        return []
+
+    print("\nThe triangular system is:")
     print(system)
     return system
 
@@ -69,6 +84,9 @@ def solve_triangular_system(trianguar_system):
     print(solution)
 
 # This is the "main"
-solver(gauss_cannon(ask_for_input()))
+system = ask_for_input()
+triangular_system = gauss_cannon(system)
+if (triangular_system != []):
+    solver(triangular_system)
 
 end = input()
