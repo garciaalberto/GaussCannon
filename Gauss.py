@@ -11,7 +11,7 @@ def ask_for_input():
         temp_array = []
         for j in range(0, size+1):
             print("Enter the value for the position:" + str(i) + "," + str(j))
-            value = int(input())
+            value = float(input())
             temp_array.append(value)
         data.append(temp_array)
     return data
