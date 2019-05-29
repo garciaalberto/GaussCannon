@@ -16,9 +16,7 @@ for i in range(dimension):
 	for j in range(dimension):
 		if i == j:
 			bidimensional_array[i][j] = diagonal
-		if i-1 == j:
-			bidimensional_array[i][j] = minor_diagonal
-		if i+1 == j:
+		if i-j == j or j-i == 1:
 			bidimensional_array[i][j] = minor_diagonal
 
 A = scipy.array(bidimensional_array)
